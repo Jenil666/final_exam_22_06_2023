@@ -8,5 +8,5 @@ class AddController extends GetxController
   RxString time = "".obs;
   TextEditingController txtTitle = TextEditingController();
   TextEditingController txtTask = TextEditingController();
-  TextEditingController txtType = TextEditingController();
+  TextEditingController txtType = TextEditingController(text: 'Urgent');
 }

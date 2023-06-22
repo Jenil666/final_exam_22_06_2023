@@ -9,6 +9,9 @@ void main()
   runApp(
     Sizer(
       builder: (context, orientation, deviceType) =>  GetMaterialApp(
+        theme: ThemeData(
+          useMaterial3: true
+        ),
         debugShowCheckedModeBanner: false,
         getPages: [
           GetPage(name: '/', page: () => HomeScreen(),),

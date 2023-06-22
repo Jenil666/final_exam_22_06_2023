@@ -18,6 +18,7 @@ class DbHelper
    String c_task = "task";
    String c_type = "type";
    String c_title = "title";
+   String c_time = "time";
 
   checkDb()
   async {
@@ -36,7 +37,7 @@ class DbHelper
       path,
       version: 1,
       onCreate: (db, version) {
-        String query = "CREATE TABLE $tableName($c_id INTEGER PRIMARY KEY AUTOINCREMENT,$c_task Text,$c_type Text,$c_title Text)";
+        String query = "CREATE TABLE $tableName($c_id INTEGER PRIMARY KEY AUTOINCREMENT,$c_task Text,$c_type Text,$c_title Text,$c_time Text)";
         db.execute(query);
       },
     );
@@ -46,12 +47,14 @@ class DbHelper
       {required task,
         required type,
         required title,
+        required time,
       }) async {
     database = await checkDb();
     database!.insert("$tableName", {
       '$c_task': task,
       '$c_type': type,
       '$c_title': title,
+      '$c_time': time,
     });
   }
 
@@ -67,6 +70,7 @@ class DbHelper
         required title,
         required task,
         required id,
+        required time,
       }) async {
     database = await checkDb();
     database!.update(
@@ -75,6 +79,7 @@ class DbHelper
           "$c_type":"$type",
           "$c_title":"$title",
           "$c_task":"$task",
+          "$c_time":"$time",
         },
         where: 'id=?',
         whereArgs: [id]);
